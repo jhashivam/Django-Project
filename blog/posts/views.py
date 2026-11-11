@@ -20,9 +20,11 @@ posts = [  # Creates a variable called posts containing a list. Each item repres
     }  # Ends the third dictionary. A comma after the final item is optional.
 ]  # Ends the list. All three post dictionaries are now stored in posts.
 
-# def helloworld(request):  # This function definition is commented out, so Python does not execute it.
-#     return HttpResponse('<h1>Hello, World!</h1>')  # If enabled, this would return a response displaying a heading.
+# Usecase1: helloworld
+def helloworld(request):  # This function definition is commented out, so Python does not execute it.
+    return HttpResponse('<h1>Hello, World!</h1>')  # If enabled, this would return a response displaying a heading.
 
+## Usecase2: home with posts where the posts are stored in a list of dictionaries. The view loops through the list and generates HTML for each post.
 def home(request):  # Defines a view named home. Django passes an HttpRequest object into request when this view is called.
     html = ""  # Creates an empty string that will gradually hold the HTML for all the posts.
     for post in posts:  # Loops through the posts list, assigning one dictionary at a time to the variable post.
@@ -41,3 +43,7 @@ def home(request):  # Defines a view named home. Django passes an HttpRequest ob
         # </div> closes the container for the current post.
         # The closing triple quotes end the string. The loop then repeats for the next post.
     return HttpResponse(html)  # After the loop finishes, sends the accumulated HTML to the browser in an HTTP response.
+
+def post(request, id):  # Defines a view named post that takes an additional parameter id.
+    print(id)  # Prints the id to the console for debugging purposes.
+    return HttpResponse(id)  # Sends the generated HTML to the browser.
