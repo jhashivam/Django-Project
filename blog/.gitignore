@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment variables and secrets
+.env
+.env.*
+
+# Local SQLite database
+db.sqlite3
+db.sqlite3-*
+
+# Uploaded files and generated static files
+media/
+staticfiles/
+
+# Exclude the backup folder and everything inside it.
+Code_backup/**/*
