@@ -1,5 +1,6 @@
 from django.shortcuts import render  # Imports render(), which combines an HTML template with data. It is not used in this example.
 from django.http import HttpResponse , HttpResponseNotFound , HttpResponseRedirect  # Imports HttpResponse (what this HttpResponse do? ), HttpResponseRedirect (what this HttpResponseRedirect do?), and HttpResponseNotFound (what this HttpResponseNotFound do?), which let a Django view send text or HTML back to the browser.  
+from django.urls import reverse  # Imports reverse(), which generates a URL from a view name and optional parameters. It is not used in this example.
 
 # This file contains views: functions that receive web requests and return responses.
 posts = [  # Creates a variable called posts containing a list. Each item represents one blog post.
@@ -25,7 +26,8 @@ def helloworld(request):  # This function definition is commented out, so Python
     return HttpResponse('<h1>Hello, World!</h1>')  # If enabled, this would return a response displaying a heading.
 
 ## Usecase2: home with posts where the posts are stored in a list of dictionaries. The view loops through the list and generates HTML for each post.
-def home(request):  # Defines a view named home. Django passes an HttpRequest object into request when this view is called.
+def home(request, name):  # Defines a view named home. Django passes an HttpRequest object into request when this view is called.
+    print(reverse('home', args=[name]))  # Generates the URL for the home view using its name and the provided name parameter. This is not used in this example, but it demonstrates how to create URLs dynamically.
     html = ""  # Creates an empty string that will gradually hold the HTML for all the posts.
     for post in posts:  # Loops through the posts list, assigning one dictionary at a time to the variable post.
         # += appends text to html; f allows expressions inside braces; triple quotes allow a string to span multiple lines.
